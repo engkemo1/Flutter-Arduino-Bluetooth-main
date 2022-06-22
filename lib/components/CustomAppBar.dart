@@ -61,12 +61,12 @@ leading: Padding(padding: EdgeInsets.only(left: 10),child: Image.asset('images/l
                           : onPress!(),
                       child: Icon(StatusConnectionProvider.device != null
                           ? Icons.bluetooth_connected
-                          : Icons.bluetooth_disabled,color: Colors.white,),
+                          : Icons.bluetooth_disabled,color: Colors.blue,),
                       style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
                           primary: StatusConnectionProvider.device != null
-                              ? Colors.blue
-                              : Colors.blueAccent),
+                              ? Colors.white
+                              : Colors.white),
                     )
                   : SizedBox.shrink());
             }),

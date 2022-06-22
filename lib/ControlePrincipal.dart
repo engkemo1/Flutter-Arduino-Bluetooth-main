@@ -130,20 +130,18 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
 
                 ControlButton(
                   sectionOffset: FixedAngles.Inclined45,
-                  externalDiameter: 300,
-                  internalDiameter: 120,
+                  externalDiameter: 300.0,
+                  internalDiameter: 120.0,
                   dividerColor: Colors.white,
                   elevation: 2,
                   externalColor: Colors.grey,
                   internalColor: Colors.grey[300],
-                  mainAction: () {
-                    _sendMessage('3');
-                  },
+
                   sections: [
-                        () => _sendMessage('2'),
-                        () => _sendMessage('1'),
-                        () => _sendMessage('4'),
-                        () => _sendMessage('6'),
+                        () => _sendMessage('F'),
+                        () => _sendMessage('L'),
+                        () => _sendMessage('B'),
+                        () => _sendMessage('R'),
 
                   ],
                 ),
@@ -157,7 +155,7 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
                         Column(children: [
                           ButtonSingleComponent(
                             buttonName: "A",
-                            comandOn: '+',
+                            comandOn: 'A',
                             colorButton: Color.fromRGBO(238, 57, 61, 1),
                             clientID: clientID,
                             connection: connection,
@@ -167,7 +165,7 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
                         Column(children: [
                           ButtonSingleComponent(
                             buttonName: "B",
-                            comandOn: '-',
+                            comandOn: 'B',
                             colorButton: Color.fromRGBO(8, 164, 113, 1),
                             clientID: clientID,
                             connection: connection,
@@ -177,7 +175,7 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
                         Column(children: [
                           ButtonSingleComponent(
                             buttonName: "C",
-                            comandOn: '*',
+                            comandOn: 'C',
                             colorButton: Color.fromRGBO(239, 206, 45, 1),
                             clientID: clientID,
                             connection: connection,
@@ -187,12 +185,24 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
                         Column(children: [
                           ButtonSingleComponent(
                             buttonName: "D",
-                            comandOn: '/',
+                            comandOn: 'D',
                             colorButton: Color.fromRGBO(49, 86, 188, 1),
                             clientID: clientID,
                             connection: connection,
                           ),
+
+
                         ]),
+                        const SizedBox(width: 10),
+
+                        ButtonSingleComponent(
+                          buttonName: "E",
+                          comandOn: 'E',
+                          colorButton: Colors.deepPurple,
+                          clientID: clientID,
+                          connection: connection,
+                        ),
+
                       ]),
                 ),
               ],
@@ -253,9 +263,7 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
   }
   void _sendMessage(String text) async {
     text = text.trim();
-    textEditingController.clear();
 
-    if (text.length > 0) {
       try {
         connection!.output.add(Uint8List.fromList(utf8.encode(text + "\r\n")));
         await connection!.output.allSent;
@@ -274,6 +282,6 @@ class _ControlePrincipalPage extends State<ControlePrincipalPage> {
         // Ignore error, but notify state
         setState(() {});
       }
-    }
+
   }
 }

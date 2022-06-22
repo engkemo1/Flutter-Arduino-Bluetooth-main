@@ -37,8 +37,8 @@ class _ButtonState extends State<ButtonSingleComponent> {
 
   Widget build(BuildContext context) {
     return (Container(
-        height: 60,
-        width: 80,
+        height: 50,
+        width: 60,
         child: FlatButton(
           onPressed: () {
             _sendMessage(widget.comandOn!);
